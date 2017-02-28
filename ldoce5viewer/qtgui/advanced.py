@@ -5,9 +5,11 @@ from __future__ import unicode_literals
 
 from operator import itemgetter
 
-from PyQt4.QtCore import Qt, QUrl
-from PyQt4.QtGui import (
-    QAction, QDialog, QKeySequence, QIcon, QTreeWidgetItem,)
+from PyQt5.QtCore import Qt, QUrl
+from PyQt5.QtGui import (
+    QKeySequence, QIcon)
+from PyQt5.QtWidgets import (
+    QAction, QDialog, QTreeWidgetItem,)
 
 from ..ldoce5 import advtree
 from ..utils.compat import range

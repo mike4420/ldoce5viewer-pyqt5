@@ -20,10 +20,12 @@ try:
 except ImportError:
     objc = None
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtNetwork import *
-from PyQt4.QtWebKit import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtNetwork import *
+from PyQt5.QtWebKit import *
+from PyQt5.QtWebKitWidgets import *
+from PyQt5.QtWidgets import *
 
 from .. import fulltext
 from .. import incremental
