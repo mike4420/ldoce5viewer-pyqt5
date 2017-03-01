@@ -570,7 +570,8 @@ class MainWindow(QMainWindow):
         if scheme == 'audio':
             self._playbackAudio(url.path())
         elif scheme == 'lookup':
-            query = dict((k, v) for (k, v) in url.queryItems())
+            urlQuery = QUrlQuery(url)
+            query = dict(urlQuery.queryItems())
             if 'q' in query:
                 q = query['q'].replace('+', ' ')
                 self._ui.lineEditSearch.setText(q)
