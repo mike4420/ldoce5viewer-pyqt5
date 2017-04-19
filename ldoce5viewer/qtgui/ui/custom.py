@@ -287,7 +287,7 @@ class WebView(QWebView):
 
     def wheelEvent(self, event):
         if event.modifiers() & Qt.ControlModifier:
-             self.wheelWithCtrl.emit(event.delta())
+             self.wheelWithCtrl.emit(event.pixelDelta())
              return
         super(WebView, self).wheelEvent(event)
 

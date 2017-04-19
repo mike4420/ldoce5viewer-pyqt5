@@ -685,13 +685,15 @@ class MainWindow(QMainWindow):
             self._timerUpdateIndex.start(0)
 
         if self._fts_hwdphr and self._fts_defexa:
-            url = QUrl("search:///")
+            urlquery = QUrlQuery()
             if phrase:
-                url.addQueryItem("phrase", phrase)
+                urlquery.addQueryItem("phrase", phrase)
             if filters:
-                url.addQueryItem("filters", filters)
+                urlquery.addQueryItem("filters", filters)
             if mode:
-                url.addQueryItem("mode", mode)
+                urlquery.addQueryItem("mode", mode)
+            url = QUrl("search:///")
+            url.setQuery(urlquery)
             self._ui.webView.load(url)
 
 
