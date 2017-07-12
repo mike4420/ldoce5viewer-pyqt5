@@ -20,10 +20,12 @@ try:
 except ImportError:
     objc = None
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtNetwork import *
-from PyQt4.QtWebKit import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtNetwork import *
+from PyQt5.QtWebKit import *
+from PyQt5.QtWebKitWidgets import *
+from PyQt5.QtWidgets import *
 
 from .. import fulltext
 from .. import incremental
@@ -568,7 +570,8 @@ class MainWindow(QMainWindow):
         if scheme == 'audio':
             self._playbackAudio(url.path())
         elif scheme == 'lookup':
-            query = dict((k, v) for (k, v) in url.queryItems())
+            urlQuery = QUrlQuery(url)
+            query = dict(urlQuery.queryItems())
             if 'q' in query:
                 q = query['q'].replace('+', ' ')
                 self._ui.lineEditSearch.setText(q)
@@ -682,13 +685,15 @@ class MainWindow(QMainWindow):
             self._timerUpdateIndex.start(0)
 
         if self._fts_hwdphr and self._fts_defexa:
-            url = QUrl("search:///")
+            urlquery = QUrlQuery()
             if phrase:
-                url.addQueryItem("phrase", phrase)
+                urlquery.addQueryItem("phrase", phrase)
             if filters:
-                url.addQueryItem("filters", filters)
+                urlquery.addQueryItem("filters", filters)
             if mode:
-                url.addQueryItem("mode", mode)
+                urlquery.addQueryItem("mode", mode)
+            url = QUrl("search:///")
+            url.setQuery(urlquery)
             self._ui.webView.load(url)
 
 
