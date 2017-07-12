@@ -558,7 +558,7 @@ class MainWindow(QMainWindow):
         def showSaveDialog(data):
             filename = QFileDialog.getSaveFileName(self,  u'Save mp3',  '',  u'MP3 Files (*.mp3)')
             if filename != '':
-                file = open(filename, "w")
+                file = open(filename[0], "wb")
                 file.write(data)
                 file.close()
         self._getAudioData(path, showSaveDialog)
