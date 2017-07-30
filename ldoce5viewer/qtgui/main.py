@@ -558,8 +558,11 @@ class MainWindow(QMainWindow):
     def downloadSelectedAudio(self):
         path = self._ui.webView.audioUrlToDownload.path()
         def showSaveDialog(data):
-            filename = QFileDialog.getSaveFileName(self,  u'Save mp3',
-                    '',  u'MP3 Files (*.mp3)')[0]
+            filename = QFileDialog.getSaveFileName(self,  u'Save mp3', \
+                '',  u'MP3 Files (*.mp3)')
+            if type(filename) is tuple:
+                filename = filename[0]
+
             if filename != '':
                 file = open(filename, "wb")
                 file.write(data)
