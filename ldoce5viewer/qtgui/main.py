@@ -26,6 +26,7 @@ from PyQt5.QtNetwork import *
 from PyQt5.QtWebKit import *
 from PyQt5.QtWebKitWidgets import *
 from PyQt5.QtWidgets import *
+from PyQt5.QtPrintSupport import *
 
 from .. import fulltext
 from .. import incremental
@@ -38,7 +39,7 @@ from . import indexer
 from .advanced import AdvancedSearchDialog
 from .config import get_config
 from .access import MyNetworkAccessManager, _load_static_data
-from .async import AsyncFTSearcher
+from .async_ import AsyncFTSearcher
 from .utils.soundplayer import create_soundplayer
 from .indexer import IndexerDialog
 from .ui.custom import ToolButton, LineEdit
